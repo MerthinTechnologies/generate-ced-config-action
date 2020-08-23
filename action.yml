@@ -1,0 +1,15 @@
+name: "Generate CED config"
+description: "Github Action to generate CloudEdgeDistribution config based on discoverability services"
+inputs:
+  cli-token:
+    description: "CloudEdgeDistribution CLI token. If not specified it'll try to resolve the CLI token from environment variable CED_CLI_TOKEN."
+    required: false
+  environment:
+    description: "Environment to use in CloudEdgeDistribution. If not specified it'll try to resolve it from environment variable CED_ENVIRONMENT, it'll use the default environment in ced.json otherwise."
+    required: false
+  extra:
+    description: 'Semicolon separated values for extra config parameters (e.g: "param1=value1; param2=value2; paramN=valueN").'
+    required: false
+runs:
+  using: "node12"
+  main: "dist/index.js"
