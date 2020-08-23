@@ -6,6 +6,7 @@ const run = async function () {
     const cliToken = core.getInput("cli-token") || process.env["CED_CLI_TOKEN"];
     const environment =
       core.getInput("environment") || process.env["CED_ENVIRONMENT"];
+    const path = core.getInput("path") || process.env["CED_PROJECT_PATH"];
     const extraConfig = core.getInput("extra");
 
     if (!cliToken) {
@@ -16,6 +17,11 @@ const run = async function () {
 
     if (environment) {
       console.log(`Using environment: ${environment}`);
+    }
+
+    if (path) {
+      process.chdir(path);
+      console.log(`Using ${path} as working directory`);
     }
 
     const command = new GenConfigCommandHandler(cliToken);

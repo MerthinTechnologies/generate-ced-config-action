@@ -1,6 +1,6 @@
-# Create CED version
+# Generate CED config
 
-Github Action to create an empty version within a CloudEdgeDistribution project.
+Github Action to generate CloudEdgeDistribution config based on discoverability services.
 
 ## Inputs
 
@@ -16,21 +16,17 @@ Environment to use in CloudEdgeDistribution. If not specified it'll try to resol
 
 Path to the CloudEdgeDistribution project. If not specified it'll try to resolve it from environment variable `CED_PROJECT_PATH`, it'll use current folder otherwise.
 
-## Output
+### `extra`
 
-### `version`
-
-Created version name
+Semicolon separated values for extra config parameters (e.g: "param1=value1; param2=value2; paramN=valueN").
 
 ## Example usage
 
 ```yaml
-- uses: MerthinTechnologies/create-ced-version-action@v1
-  id: create-version
+- uses: MerthinTechnologies/generate-ced-config-action@v1
   with:
     path: ${{ env.PROJECT_FOLDER }}
     cli-token: ${{ secrets.CED_CLI_TOKEN }}
-    environment: 'production'
-- name: Get the output version
-  run: echo "Version ${{ steps.create-version.outputs.version }} created"  
+    environment: "production"
+    extra: "version=${{ env.VERSION }}
 ```

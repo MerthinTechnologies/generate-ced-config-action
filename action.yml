@@ -7,6 +7,9 @@ inputs:
   environment:
     description: "Environment to use in CloudEdgeDistribution. If not specified it'll try to resolve it from environment variable CED_ENVIRONMENT, it'll use the default environment in ced.json otherwise."
     required: false
+  path:
+    description: "Path to the CloudEdgeDistribution project. If not specified it'll try to resolve it from environment variable CED_PROJECT_PATH, it'll use current folder otherwise."
+    required: false
   extra:
     description: 'Semicolon separated values for extra config parameters (e.g: "param1=value1; param2=value2; paramN=valueN").'
     required: false
